@@ -15,11 +15,9 @@ def create_app(config_class=Config):
     login_manager.init_app(app)
     
     from triage_app.main.routes import main
+    from triage_app.users.routes import users
     
     app.register_blueprint(main)
-    
-    with app.app_context():
-        from triage_app import models
-        db.create_all()
+    app.register_blueprint(users)
     
     return app
