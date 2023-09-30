@@ -1,12 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "layout_public.html" %}
+{% block content %}
 
-    <head>
-        <title>Surge Finder</title>
-    </head>
-    
-    <body>
-        <h3>Hello, World</h3>
-    </body>
+<section class="position-relative overflow-hidden">
+  <div class="container pt-lg-2">
+    <div class="row flex-lg-nowrap">
+      <div class="col-lg-5 col-xl-5 text-center text-lg-start pt-5 mt-xl-4">
+        <div class="col jumbotron">
+          <h3 class='pb-3 text-dark fw-bold Montserrat'>Connecting Roster Members <br><span class='text-danger'>with Surge Alerts</span></h3>
+          <p class="lead mt-4">The Surge Alert Triage (SAT) platform helps roster managers of Red Cross and Red Crescent national societies quickly manage incoming requests for deployments to international disaster response operations. The tool can send text messages directly to suitable candidates to gauge their interest and availability, and allows managers to expedite approvals for their application to the RRMS platform.</p>
+          <br>
+          <a href="/about" class="btn btn-dark btn-lg mt-3 mb-4" id="override-link-color">Learn More</a>
+          <p>Current Path: {{ request.path }}</p>
 
-</html>
+        </div>
+      </div>
+      <div class='col'>
+        <div class='mt-6 d-none d-lg-block'>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock content %}
