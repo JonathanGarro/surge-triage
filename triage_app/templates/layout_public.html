@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.13.1/b-2.3.3/b-colvis-2.3.3/b-html5-2.3.3/date-1.2.0/rg-1.3.0/sb-1.4.0/sp-2.1.0/datatables.min.css" />
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/main.css') }}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:Bold|Montserrat:Bold|Oswald">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <title>Surge Alert Triage</title>
+
+</head>
+
+<body class="d-flex flex-column min-vh-100" data-spy="scroll" data-target=".card" data-offset="50">
+    <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <i class="bi bi-globe2 pe-2"></i>
+        <a class="navbar-brand" href="/" style="font-family: 'Montserrat';">Surge Alert Triage</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              {% if request.path == '/' %}
+              <a class="nav-link active" href="/">Home</a>
+              {% else %}
+              <a class="nav-link" href="/">Home</a>
+              {% endif %}
+            </li>
+            <li class="nav-item">
+              {% if request.path == '/about' %}
+              <a class="nav-link active" href="/about">About</a>
+              {% else %}
+              <a class="nav-link" href="/about">About</a>
+              {% endif %}
+            </li>
+            <li class="nav-item">
+              {% if request.path == '/login' %}
+              <a class="nav-link active" href="/login">Login</a>
+              {% else %}
+              <a class="nav-link" href="/login">Login</a>
+              {% endif %}
+            </li>
+          </ul>
+          
+        </div>
+      </div>
+    </nav>
+    </header>
+
+    {% block content %}{% endblock %}
+    <br><br>
+    <footer class="text-white text-center text-lg-start mt-auto" style='background: #505050'>
+      <!-- Grid container -->
+      <div class="container p-4">
+        <!--Grid row-->
+        <div class="row">
+          <!--Grid column-->
+          <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+            <h5 class="Montserrat">Portal Development</h5>
+            <ul class="list-unstyled mb-0">
+              <li>
+                <a href="https://sims-portal.betteruptime.com/" class="text-white">Portal Status</a>
+              </li>
+              <li>
+                <a href="https://github.com/JonathanGarro/SIMS-Portal" class="text-white">Source Code</a>
+              </li>
+              <li>
+                <a href="https://jonathangarro.github.io/sims-portal-releases/" class="text-white">Release Notes</a>
+              </li>
+              <li>
+                <a href="https://trello.com/b/zzwVdwoY/sims-portal-development-roadmap" class="text-white">Roadmap</a>
+              </li>
+            </ul>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+            <h5 class="Montserrat">User Resources</h5>
+            <ul class="list-unstyled mb-0">
+              <li>
+                <a href="/portal_admins" class="text-white">Portal Administrators</a>
+              </li>
+              <li>
+                <a href="https://simsportal.docs.apiary.io/" class="text-white">API Documentation</a>
+              </li>
+              <li>
+                <a href="/privacy" class="text-white">Privacy Policy</a>
+              </li>
+              <li>
+                <a href="/badges" class="text-white">Achievement Badges</a>
+              </li>
+            </ul>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+            <h5 class="Montserrat">Useful Links</h5>
+            <ul class="list-unstyled mb-0">
+              <li>
+                <a href="https://learn-sims.org" class="text-white">SIMS Learning Platform</a>
+              </li>
+              <li>
+                <a href="https://go.ifrc.org/deployments/catalogue/infoMgt" class="text-white">IM Surge Catalogue</a>
+              </li>
+              <li>
+                <a href="https://go.ifrc.org" class="text-white">IFRC GO Platform</a>
+              </li>
+              <li>
+                <a href="https://preparecenter.org/toolkit/data-readiness-toolkit/" class="text-white">Data Readiness Toolkit</a>
+              </li>
+            </ul>
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+      </div>
+      <!-- Grid container -->
+
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        <small class="text-muted">Site source code and other assets are licensed under <a href='http://creativecommons.org/licenses/by-nc-sa/4.0/' class='text-light fw-bold'> Attribution-NonCommercial-ShareAlike 4.0 International</a> (CC BY-NC-SA 4.0)</small>
+
+      </div>
+      <!-- Copyright -->
+    </footer>
+  </body>
+<!-- jQuery (required for Bootstrap and DataTables) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+  <!-- Popper.js (required for Bootstrap) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  
+  <!-- Bootstrap (choose one version, not both) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  
+  <!-- D3.js (if needed) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.6.1/d3.min.js" integrity="sha512-MefNfAGJ/pEy89xLOFs3V6pYPs6AmUhXJrRlydI/9wZuGrqxmrdQ80zKHUcyadAcpH67teDZcBeS6oMJLPtTqw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
+  <!-- DataTables and its dependencies -->
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.13.1/b-2.3.3/b-colvis-2.3.3/b-html5-2.3.3/date-1.2.0/rg-1.3.0/sb-1.4.0/sp-2.1.0/datatables.min.js"></script>
+  
+  <!-- Your custom scripts (including scripts.js) -->
+  <script src="{{url_for('static', filename='js/scripts.js')}}"></script>
+
+</html>
