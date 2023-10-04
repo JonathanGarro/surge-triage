@@ -1,3 +1,18 @@
+a {
+    text-decoration: none;
+    color: #df4759
+}
+
+a:link {
+    text-decoration: none;
+    color: #df4759
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #df4759
+}
+
 .active {
     font-weight: bold;
     color: white;
@@ -5,14 +20,43 @@
     text-decoration-thickness: 3px;
 }
 
+.bi-custom-first {
+    color: rgb(71, 0, 0);
+    font-size: 2em;
+}
+
+.bi-custom-second {
+    color: rgb(111, 48, 0);
+    font-size: 2em;
+}
+
+.bi-custom-third {
+    color: rgb(8, 65, 0);
+    font-size: 2em;
+}
+
 .bi-globe2 {
     color: white;
     font-size: 2em; 
 }
 
+.Montserrat {
+    font-family: 'Montserrat';
+}
+
+.navbar-logged-in {
+    background-color: rgb(45, 0, 0)
+}
+
 .no-decoration {
     text-decoration: none;
 }
+
+.sidebar-guidance {
+    font-size: 1em;
+    color: rgb(81, 81, 81)
+}
+
 
 #hideMe {
     -moz-animation: cssAnimation 0s ease-in 5s forwards;
