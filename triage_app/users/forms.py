@@ -6,15 +6,14 @@ from wtforms import StringField, PasswordField, FileField, SubmitField, BooleanF
 from wtforms_sqlalchemy.fields import QuerySelectField
 from flask_sqlalchemy import SQLAlchemy
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError, Optional
-from triage_app.models import User
+from triage_app.models import User, Country_Code
 
 class RegistrationForm(FlaskForm):
-    first_name = StringField('First Name', validators=[DataRequired(), Length(min=2, max=40)])
-    last_name = StringField('Last Name', validators=[DataRequired(), Length(min=2, max=40)])
+    first_name = StringField('First Name', validators=[DataRequired()])
+    last_name = StringField('Last Name', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
-    slack_id = StringField('SIMS Slack ID', validators=[DataRequired()])
-    phone_country = StringField('Cell Country Code', validators=[DataRequired(), Length(min=1, max=5)])
-    phone = IntegerField('Cell Number (Integers Only)', validators=[DataRequired(), Length(min=1, max=15)])
+    phone_country = StringField('Country Code', validators=[DataRequired()])
+    phone = IntegerField('Cell Number (Integers Only)', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired(), Length(min=6, max=24)])
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), Length(min=6, max=24), EqualTo('password')])
     submit = SubmitField('Register')
