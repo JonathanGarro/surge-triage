@@ -1,0 +1,167 @@
+{% extends "layout_public.html" %}
+{% block content %}
+
+<div class="container mt-4">
+    <div id="hideMe">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+           {% if messages %}
+               {% for category, message in messages %}
+                   <div class="py-3 alert alert-{{ category }}">
+                       {{ message }} 
+                   </div>
+               {% endfor %}
+           {% endif %}
+       {% endwith %}
+    </div>
+    <div class="row mt-5">
+            <div class="col-md-5 pe-5">
+            <h2 class="text-danger pb-4 Montserrat fw-bold mt-4">Triage App Process</h2>
+                <h5 class="text-danger Montserrat">Submit Registration</h5>
+                <p class="sidebar-guidance">Fill out this form with your information.</p>
+                
+                <h5 class="text-danger Montserrat mt-4">Verify Email and Phone Number</h5>
+                <p class="sidebar-guidance">You'll receive an email and text message confirming the contact information you provided. </p>
+    
+                <h5 class="text-danger Montserrat mt-4">Configure Profile</h5>
+                <p class="sidebar-guidance">Update your preferred deployment types and language abilities to help match you with suitable surge alerts.</p>
+    
+                <h5 class="text-danger Montserrat mt-4">Respond to Alerts</h5>
+                <p class="sidebar-guidance">Alerts that match your preferences and abilities will be sent straight to your phone, giving you the option to provide a quick thumbs up if you're interested and available.</p>
+            </div>
+        <div class="col pb-4">
+            <form method="POST" action="" class="mx-auto p-4 bg-light text-light rounded-3 border border-3" novalidate>
+                {{ form.hidden_tag() }}
+                <fieldset class="form-group">
+                    <h5 class='text-secondary Montserrat mb-4'>All Fields Required</h5>
+                    <div class='row'>
+                        <div class='col'>
+                            <div class="form-group pb-4">
+                                {{ form.first_name.label(class="form-control-label pb-2 text-danger") }}
+                                
+                                {% if form.first_name.errors %}
+                                    {{ form.first_name(class="form-control form-control-lg is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.first_name.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                {% else %}
+                                    {{ form.first_name(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class='col'>
+                            <div class="form-group pb-4">
+                                {{ form.last_name.label(class="form-control-label pb-2 text-danger") }}
+                                
+                                {% if form.last_name.errors %}
+                                    {{ form.last_name(class="form-control form-control-lg is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.last_name.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                {% else %}
+                                    {{ form.last_name(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class='col'>
+                            <div class="form-group pb-4">
+                                {{ form.email.label(class="form-control-label pb-2 text-danger") }}
+                                {% if form.email.errors %}
+                                    {{ form.email(class="form-control form-control-lg is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.email.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                {% else %}
+                                    {{ form.email(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class='col-md-3'>
+                            <div class="form-group pb-4">
+                                {{ form.phone_country.label(class="form-control-label pb-2 text-danger") }}
+                                {% if form.phone_country.errors %}
+                                    {{ form.phone_country(class="form-control form-control-lg is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.phone_country.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                {% else %}
+                                    {{ form.phone_country(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class='col'>
+                            <div class="form-group pb-4">
+                                {{ form.phone.label(class="form-control-label pb-2 text-danger") }}
+                                {% if form.phone.errors %}
+                                    {{ form.phone(class="form-control form-control-lg is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.phone.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                {% else %}
+                                    {{ form.phone(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                        <div class='row'>
+                            <div class='col'>
+                                <div class="form-group pb-4">
+                                    {{ form.password.label(class="form-control-label pb-2 text-danger") }}
+                                    {% if form.password.errors %}
+                                        {{ form.password(class="form-control form-control-lg is-invalid") }}
+                                            <div class="invalid-feedback">
+                                                {% for error in form.password.errors %}
+                                                    <span>{{ error }}</span>
+                                                {% endfor %}
+                                            </div>
+                                    {% else %}
+                                        {{ form.password(class="form-control form-control-lg") }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class='col'>
+                                <div class="form-group pb-4">
+                                    {{ form.confirm_password.label(class="form-control-label pb-2 text-danger") }}
+                                    {% if form.confirm_password.errors %}
+                                        {{ form.confirm_password(class="form-control form-control-lg is-invalid") }}
+                                            <div class="invalid-feedback">
+                                                {% for error in form.confirm_password.errors %}
+                                                    <span>{{ error }}</span>
+                                                {% endfor %}
+                                            </div>
+                                    {% else %}
+                                        {{ form.confirm_password(class="form-control form-control-lg") }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        
+                    <div class="alert alert-warning mt-2 mb-4" role="alert">
+                      By registering, you are accepting the <a href='/privacy'>Surge Alert Triage privacy policy</a>.
+                    </div>
+                    
+                    {{ form.submit(class="btn btn-danger w-25") }}
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    
+    
+    
+    
+
+</div>
+{% endblock content %}
